@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Convert QrCode Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body
+        background="background.jpg"
+        style=
+                " background-repeat:no-repeat ;
+                background-size:100% 100%;
+                background-attachment: fixed;"
+    >
+        <!-- 百度压缩版引用地址:  -->
+        <script src="http://libs.baidu.com/jquery/1.5.2/jquery.min.js"></script>
+
+        <script type="text/javascript" src="js/jquery.qrcode.js"></script>
+        <script type="text/javascript" src="js/qrcode.js"></script>
+
+        <!-- 设置所有内容居中 -->
+        <style>
+            .outer {
+                text-align: center;
+            }
+            .inner {
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+        </style>
+
+        <div class="outer">
+            <h1  class="inner" style="margin-top: 100px;">This is qrCodePay's QrCodeImg</h1><br/>
+
+            所需转换的二维码图片文本 <input id="qrcodeStr" class="inner" style="width: 220px" type="text" value=""> <br/>
+            <input id="genButton"  class="inner" style="width: 110px"  type="button" value="生成二维码图片" onclick="genQrCodeImg()"><br/>
+            <div id="genQrCodeImg" class="inner"></div>
+        </div>
+
+        <script>
+            //点击按钮，根据输入内容，生成支付二维码
+            function genQrCodeImg() {
+                //在生成并显示二维码图片之前，先清空之前已存在的二维码图片，达到刷新二维码的效果
+                $('canvas').detach();
+                //调js库生成码
+                $('#genQrCodeImg').qrcode({
+                    text : $('#qrcodeStr').val()
+                });
+            }
+        </script>
+
+    </body>
+</html>
